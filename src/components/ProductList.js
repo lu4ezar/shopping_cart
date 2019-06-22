@@ -2,12 +2,12 @@ import * as React from 'react';
 import Product from './Product';
 import { connect } from 'react-redux';
 import { List, Typography } from '@material-ui/core';
-import { hydrateList } from '../redux/actions/list';
+import { hydrateList } from '../redux/actions/books';
 import { changeLoadingState } from '../redux/actions/loading';
 
 const mapStateToProps = state => ({
 	loading: state.loading,
-	list: state.list
+	books: state.books
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -15,13 +15,13 @@ const mapDispatchToProps = dispatch => ({
 	setLoading: status => dispatch(changeLoadingState(status))
 });
 
-const ProductList = ({ list, loading, handleOpen }) =>
+const ProductList = ({ books, loading, handleOpen }) =>
 	loading ? (
 		<Typography variant='h6'>Loading...</Typography>
 	) : (
 		<div>
 			<List>
-				{list.map((product, index) => (
+				{books.map((product, index) => (
 					<Product key={index} prod={product} handleOpen={handleOpen} />
 				))}
 			</List>

@@ -1,4 +1,4 @@
-const list = (state = [], action) => {
+const books = (state = [], action) => {
 	switch (action.type) {
 		case 'HYDRATE_LIST':
 			return action.data;
@@ -7,4 +7,4 @@ const list = (state = [], action) => {
 	}
 };
 
-export default list;
+export default books;

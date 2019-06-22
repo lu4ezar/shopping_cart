@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import list from './list';
+import books from './books';
 import loading from './loading';
 import cart from './cart';
 import productId from './productId';
 
 export default combineReducers({
-	list,
+	books,
 	loading,
 	cart,
 	productId

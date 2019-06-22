@@ -2,13 +2,13 @@ import { createSelector } from 'reselect';
 
 const getId = state => state.productId;
 
-const getList = state => state.list;
+const getBooks = state => state.books;
 
 const getCart = state => state.cart;
 
 export const getProductById = createSelector(
-	[getList, getId],
-	(list, id) => list.find(book => book.isbn13 === id)
+	[getBooks, getId],
+	(books, id) => books.find(book => book.isbn13 === id)
 );
 
 export const getBookInCartCount = createSelector(

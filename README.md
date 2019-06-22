@@ -9,7 +9,7 @@ Dependencies:
 
 ```
 git clone https://github.com/lu4ezar/shopping_cart
-cd todolist
+cd shopping_cart
 yarn install
 yarn start
 ```

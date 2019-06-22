@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { hydrateList } from '../redux/actions/list';
+import { hydrateList } from '../redux/actions/books';
 import { changeLoadingState } from '../redux/actions/loading';
 
 const dataFetcher = () => dispatch => {
