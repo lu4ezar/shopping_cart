@@ -1,4 +1,4 @@
-const productId = (state = null, action) => {
+export const productId = (state = null, action) => {
 	switch (action.type) {
 		case 'SET_PRODUCT_ID':
 			return action.id;
@@ -6,5 +6,3 @@ const productId = (state = null, action) => {
 			return state;
 	}
 };
-
-export default productId;

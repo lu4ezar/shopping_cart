@@ -11,22 +11,29 @@ import {
 	Button
 } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
-import { getProductById } from '../redux/reselect';
+import { getBookByIsbn13, getBookInCartQuantity } from '../utils/reselect';
 import { connect } from 'react-redux';
-import { updateCart } from '../redux/actions/cart';
-import { getBookInCartCount } from '../redux/reselect';
+import { addToCart, removeFromCart } from '../redux/actions/cart';
 
 const mapStateToProps = state => ({
-	product: getProductById(state),
-	bookCount: getBookInCartCount(state)
+	product: getBookByIsbn13(state),
+	bookCount: getBookInCartQuantity(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-	addProduct: (id, quantity) => dispatch(updateCart({ id, quantity }))
+	addProduct: id => dispatch(addToCart(id)),
+	removeProduct: id => dispatch(removeFromCart(id))
 });
 
 const ProductDetails = props => {
-	const { product, open, onClose, addProduct, bookCount } = props;
+	const {
+		product,
+		open,
+		onClose,
+		addProduct,
+		removeProduct,
+		bookCount = 0
+	} = props;
 	return (
 		<Dialog open={open} onClose={onClose}>
 			<Card>
@@ -54,11 +61,17 @@ const ProductDetails = props => {
 						fullWidth
 						variant='contained'
 						title='add to cart'
-						onClick={() =>
-							addProduct(product.isbn13, bookCount ? bookCount + 1 : 1)
-						}
+						onClick={() => addProduct(product.isbn13)}
 					>
 						<AddShoppingCart />
+					</Button>
+					<Button
+						component='div'
+						variant='outlined'
+						title='remove from cart'
+						onClick={() => removeProduct(product.isbn13)}
+					>
+						{bookCount}
 					</Button>
 				</CardActions>
 			</Card>

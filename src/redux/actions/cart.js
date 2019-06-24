@@ -1,7 +1,9 @@
-export const updateCart = payload => ({
-	type: 'UPDATE_CART',
-	payload: {
-		id: payload.id,
-		quantity: payload.quantity
-	}
+export const addToCart = id => ({
+	type: 'ADD_TO_CART',
+	id
+});
+
+export const removeFromCart = id => ({
+	type: 'REMOVE_FROM_CART',
+	id
 });
