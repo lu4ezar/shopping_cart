@@ -37,10 +37,12 @@ export const getTotalCartQuantity = createSelector(
 
 export const getTotalCartSum = createSelector(
 	[getBooks, getCart],
-	(books, cart) =>
-		Object.entries(cart).reduce((acc, [id, quantity]) => {
+	(books, cart) => {
+		const sum = Object.entries(cart).reduce((acc, [id, quantity]) => {
 			const price = books.find(({ isbn13 }) => isbn13 === id).price;
 			const parsedPrice = Number(price.replace(/[^0-9.-]+/g, ''));
-			return (acc += parsedPrice * quantity);
-		}, 0)
+			return (acc += +(parsedPrice * quantity));
+		}, 0);
+		return sum.toFixed(2);
+	}
 );
