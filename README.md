@@ -10,6 +10,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ```
 git clone https://github.com/lu4ezar/shopping_cart
 cd shopping_cart
-yarn install
-yarn start
+npm install
+npm start
 ```
